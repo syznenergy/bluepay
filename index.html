@@ -1,57 +1,93 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>BluePay LTD 2026 - Buy BPC Code</title>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BluePay</title>
 <style>
-*{box-sizing:border-box}
-body{margin:0;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;background:#f6f8ff;color:#111}
-.top{background:#0000FF;color:#fff;padding:26px 16px;text-align:center}
-.top h1{margin:0;font-size:22px;letter-spacing:1px}
-.top p{margin:8px 0 0;opacity:.9}
-.wrap{max-width:480px;margin:0 auto;padding:14px}
-.card{background:#fff;border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 6px 24px rgba(0,0,0,.06)}
-.box{border:2px solid #e5e7eb;border-radius:14px;padding:16px;margin:12px 0}
-.box.hot{border-color:#0000FF;background:#f0f2ff;transform:scale(1.02)}
-.price{font-size:28px;font-weight:800;color:#0000FF;margin:8px 0}
-.bank{background:#eef0ff;border:2px dashed #0000FF;border-radius:14px;padding:18px;text-align:center}
-.acct{font-size:30px;font-weight:900;letter-spacing:1px;margin:6px 0}
-.copy{background:#111;color:#fff;border:0;padding:10px 16px;border-radius:8px;margin-top:8px}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
+body{background:#fff}
+.top{padding:15px;display:flex;justify-content:space-between;align-items:center}
+.top span{color:red;font-weight:bold;font-size:13px}
+.balance{background:#0000ff;color:white;margin:10px;padding:20px;border-radius:15px}
+.balance h3{font-size:14px}.balance h2{font-size:18px;margin:8px 0}
+.balance p{font-size:12px;color:#ffff99}
+.withdraw{float:right;background:white;color:black;padding:6px 12px;border-radius:5px;border:none;margin-top:-35px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;padding:20px;text-align:center}
+.grid div{font-size:12px}
+.page{display:none;padding:20px}
+.page.active{display:block}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
+.btn{width:100%;background:#001a4d;color:white;padding:14px;border:none;border-radius:10px;margin-top:10px;font-weight:bold}
+.bankbox{background:#f5f5f5;padding:15px;border-radius:10px;margin-top:10px}
+.copy{background:orange;border:none;padding:5px 10px;border-radius:5px;float:right}
+.notice{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.5);display:flex;align-items:center;justify-content:center}
+.noticebox{background:white;padding:20px;border-radius:10px;text-align:center;width:85%}
 </style>
 </head>
 <body>
-<div class="top">
-<h1>BLUEPAY LTD 2026</h1>
-<p>Buy Your BPC Code Instantly</p>
+<div id="home">
+<div class="top"><div>👤 Hi, Prince!</div><span>News</span></div>
+<div class="balance">
+<h3>Current Balance</h3>
+<h2>₦200,000.00</h2>
+<button class="withdraw">Withdraw</button>
+<p>Daily spend target: ₦200,000</p>
 </div>
-<div class="wrap">
-<div class="card">
-<h3>Select Your Package</h3>
-<div class="box">
-<b>Basic Package</b>
-<div class="price">₦8,000</div>
-<p>1 BPC Code - Standard Delivery</p>
-</div>
-<div class="box hot">
-<b>Standard - Most Popular</b>
-<div class="price">₦15,000</div>
-<p>2 BPC Codes - Faster Delivery</p>
-</div>
-<div class="box">
-<b>Premium Package</b>
-<div class="price">₦25,000</div>
-<p>4 BPC Codes - Instant Delivery</p>
-</div>
-<div class="bank">
-<h3>Pay For Your BPC Code</h3>
-<p>Bank: <b>Kuda Bank</b></p>
-<div class="acct">7005596257</div>
-<p>Account Name: <b>PRINCE</b></p>
-<button class="copy" onclick="navigator.clipboard.writeText('7005596257');alert('Copied: 7005596257')">Copy Account Number</button>
-<p style="margin-top:14px;font-size:12px"><b>Important:</b> After paying to 7005596257, save your proof. Your BPC code will be sent once payment is confirmed.</p>
+<div class="grid">
+<div onclick="openBuy()"><span>💾</span><br>Buy BPC</div>
+<div><span>📡</span><br>Airtime</div>
+<div><span>📶</span><br>Data</div>
+<div><span>📊</span><br>Video</div>
+<div><span>💰</span><br>Earn more</div>
+<div><span>🌐</span><br>Channel</div>
+<div><span>💼</span><br>Support</div>
+<div><span>👥</span><br>Info</div>
+<div><span>👤</span><br>Profile</div>
 </div>
 </div>
+<div id="buyPage" class="page">
+<h3 style="background:#001a4d;color:white;padding:15px;margin:-20px -20px 20px -20px">BluePay</h3>
+<label>Amount</label>
+<input value="₦6,550" readonly>
+<label>Full Name</label>
+<input id="name" placeholder="Your full name">
+<label>Your Email Address</label>
+<input id="email" placeholder="Email address">
+<button class="btn" onclick="showBank()">Proceed to Pay</button>
 </div>
+<div id="bankPage" class="page">
+<h3 style="display:flex;justify-content:space-between">Bank Transfer <span onclick="location.reload()" style="color:red">Cancel</span></h3>
+<div style="text-align:center;margin:20px 0"><h3>NGN6,550</h3><p>Bluepay Agent</p></div>
+<p style="text-align:center">Proceed to your bank app to complete this Transfer</p>
+<div class="bankbox">
+<p>Amount<br><b>NGN6,550</b> <button class="copy">Copy</button></p><br>
+<p>Account Number<br><b>7005596257</b> <button class="copy">Copy</button></p><br>
+<p>Bank Name<br><b>Kuda MFB</b></p><br>
+<p>Account Name<br><b>PRINCE FEMOWEI - BluePay LTD</b></p><br>
+<p>Upload Payment Receipt</p>
+<div style="border:1px dashed orange;padding:15px;text-align:center;border-radius:10px">Click to upload or drag your receipt here</div>
+<p style="font-size:12px;margin-top:10px">Pay to this specific account and upload your receipt for quick confirmation.<br>Reminder: Please do not use Opay for transfers.</p>
+<button class="btn" style="background:orange">I have made this bank Transfer</button>
+</div>
+</div>
+<div id="notice" class="notice" style="display:none">
+<div class="noticebox">
+<div style="font-size:40px">⚠️</div>
+<h3 style="color:red">Important Notice</h3>
+<p style="margin:10px 0">Please DO NOT use Opay to make payments. Opay transactions may not be processed correctly. Use other banks for successful transfers.</p>
+<button class="btn" style="background:green;width:auto;padding:10px 20px" onclick="closeNotice()">I Understand</button>
+</div>
+</div>
+<script>
+function openBuy(){document.getElementById('home').style.display='none';document.getElementById('buyPage').classList.add('active');}
+function showBank(){
+if(document.getElementById('name').value==''||document.getElementById('email').value==''){alert('Fill name and email');return}
+document.getElementById('buyPage').classList.remove('active');
+document.getElementById('bankPage').classList.add('active');
+document.getElementById('notice').style.display='flex';
+}
+function closeNotice(){document.getElementById('notice').style.display='none';}
+</script>
 </body>
   </html>
